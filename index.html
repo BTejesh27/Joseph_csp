@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhuram Fruit Juice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2em;
+        }
+
+        .juice-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 1em;
+            padding: 1em;
+            width: 200px;
+            background-color: #fff;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .juice-card:hover {
+            transform: scale(1.05);
+        }
+
+        .juice-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> <strong> Madhuram Fruit Juice</strong></h1>
+    </header>
+
+    <section id="juice-menu"></section>
+
+    <script>
+        // Sample data for the juice menu
+        const juices = [
+            { name: "Apple Bliss", price: "₹120", details: "Fresh apple juice with a hint of sweetness.", ingredients: ["Apples", "Sugar", "Water"], image: "apple.jpg" },
+            { name: "Berry Burst", price: "₹150", details: "A mix of assorted berries for a burst of flavors.", ingredients: ["Strawberries", "Blueberries", "Raspberries", "Sugar", "Water"], image: "berry.jpg" },
+            { name: "Citrus Splash", price: "₹100", details: "Refreshing citrus blend for a zesty kick.", ingredients: ["Oranges", "Lemons", "Limes", "Sugar", "Water"], image: "c.jpg" },
+            { name: "Mango Tango", price: "₹180", details: "Exotic mango flavor with a tropical twist.", ingredients: ["Mangoes", "Sugar", "Water"], image: "mango.jpeg" },
+            { name: "Pineapple Paradise", price: "₹150", details: "Tantalizing pineapple goodness in every sip.", ingredients: ["Pineapples", "Sugar", "Water"], image: "p.jpg" },
+            { name: "Watermelon Wave", price: "₹130", details: "Cooling watermelon juice perfect for hot days.", ingredients: ["Watermelons", "Sugar", "Water"], image: "w.jpg" },
+            { name: "Grape Delight", price: "₹150", details: "Sweet and succulent grape juice for grape lovers.", ingredients: ["Grapes", "Sugar", "Water"], image: "g.jpg" },
+            { name: "Kiwi Fusion", price: "₹200", details: "A fusion of kiwi and other fruits for a unique taste.", ingredients: ["Kiwi", "Apples", "Sugar", "Water"], image: "k.jpg" },
+            { name: "Pomegranate Passion", price: "₹180", details: "Passionate pomegranate flavor to awaken your senses.", ingredients: ["Pomegranates", "Sugar", "Water"], image: "pro.jpg" },
+            { name: "Strawberry Fields", price: "₹120", details: "Juicy strawberries blended for a delightful experience.", ingredients: ["Strawberries", "Sugar", "Water"], image: "s.jpg" },
+            // Add more juices with images
+        ];
+
+        // Function to create juice cards
+        function createJuiceCard(juice) {
+            const card = document.createElement("div");
+            card.classList.add("juice-card");
+            card.innerHTML = `
+                <img src="${juice.image}" alt="${juice.name}" class="juice-image">
+                <h3>${juice.name}</h3>
+                <p><strong>Price:</strong> ${juice.price}</p>
+                <p><strong>Ingredients:</strong> ${juice.ingredients.join(", ")}</p>
+            `;
+            card.addEventListener("click", () => {
+                alert(`${juice.name}\nDetails: ${juice.details}\nIngredients: ${juice.ingredients.join(", ")}\nPrice: ${juice.price}`);
+            });
+            return card;
+        }
+
+        // Populate the juice menu
+        const juiceMenu = document.getElementById("juice-menu");
+        juices.forEach(juice => {
+            const juiceCard = createJuiceCard(juice);
+            juiceMenu.appendChild(juiceCard);
+        });
+    </script>
+</body>
+</html>
